@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI CRM</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Auth Container -->
+    <div id="auth-container" class="container">
+        
+        <!-- Login Form -->
+        <div id="login-card" class="card">
+            <h1>Welcome Back</h1>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Sign in to access your CRM</p>
+            
+            <div id="login-error" class="error-message"></div>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" required placeholder="admin">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="••••••">
+                </div>
+                <button type="submit">Sign In</button>
+            </form>
+            
+            <div class="switch-view">
+                Don't have an account? <a onclick="showRegister()">Register</a>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-card" class="card hidden">
+            <h1>Create Account</h1>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Join to manage your clients</p>
+
+            <div id="register-error" class="error-message"></div>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-username">Username</label>
+                    <input type="text" id="register-username" required placeholder="Choose a username">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required placeholder="Choose a password">
+                </div>
+                <button type="submit">Create Account</button>
+            </form>
+
+            <div class="switch-view">
+                Already have an account? <a onclick="showLogin()">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div id="dashboard-container" class="container dashboard-container hidden">
+        <div class="card">
+            <div class="header">
+                <h2>Client Directory</h2>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+            
+            <div id="client-list">
+                <!-- Clients will be loaded here -->
+                <p style="text-align: center; color: var(--text-secondary);">Loading clients...</p>
+            </div>
+            
+            <button onclick="fetchClients()" style="margin-top: 1rem; background-color: var(--text-secondary);">Refresh List</button>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
